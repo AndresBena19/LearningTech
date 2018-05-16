@@ -1,0 +1,8 @@
+﻿
+@using(Html.BeginForm("login","Home", FormMethod.Post)){
+<label> Username:</label>
+<input type="text" id="username" name="username" />
+<label> Password:</label>
+<input type="password" id="password" name="password" />
+<input type="submit" value="click me" id="Submit" onclick="location.href='@Url.Action("Login","Home")'"/>
+}

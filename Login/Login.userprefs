@@ -1,0 +1,19 @@
+﻿<Properties StartupConfiguration="{87CB6789-6279-4B43-95D0-5F762FF3FB7C}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Login/Views/Home/Respuesta.cshtml">
+    <Files>
+      <File FileName="Login/Controllers/HomeController.cs" Line="26" Column="10" />
+      <File FileName="Login/App_Start/RouteConfig.cs" Line="8" Column="31" />
+      <File FileName="Login/Models/loginSimple.cs" Line="6" Column="61" />
+      <File FileName="Login/Models/ModeloFacade.cs" Line="11" Column="1" />
+      <File FileName="Login/Views/Home/Index.cshtml" Line="8" Column="2" />
+      <File FileName="Login/Views/Home/Respuesta.cshtml" Line="14" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Login PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
+</Properties>
