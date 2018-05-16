@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="~/Scripts/Particules/css/style.css">
     <!--===============================================================================================-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
 
 
     <style>
@@ -28,7 +28,15 @@
 
 </head>
 <body>
+    @if (ViewData["message"] != null)
+    {
+        <div class="alert alert-danger">
+            <strong>@ViewData["message"]</strong>
+        </div>
+    }
+
     <div id="particles-js"></div>
+
     <div class="signup__container">
         <div class="container__child signup__thumbnail">
             <div class="thumbnail__logo">
@@ -53,6 +61,7 @@
             @using (Html.BeginForm("MakeRegister", "Home", FormMethod.Post))
             {
                 <form action="#">
+
                     <div class="form-group">
                         <label for="username">Username</label>
                         <input class="form-control" type="text" name="UserName" id="username" placeholder="Andres Benavides" required />
@@ -74,15 +83,19 @@
                             <li>
                                 <input class="btn btn--form" type="submit" onclick="location.href='@Url.Action("Index","Home")'" value="Register" />
                             </li>
-                          
+
                         </ul>
                     </div>
                 </form>
             }
+
         </div>
     </div>
 
+
     <script src='https://cldup.com/S6Ptkwu_qA.js'></script>
     <script src="~/Scripts/Particules/js/index.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -36,11 +36,17 @@ namespace Login.Controllers
         {
             ModeloFacade facade = new ModeloFacade();
 
-            string answer;
+        
+            try
+            {
+                facade.SignUp(UserName, FullName, Password, Birthday);
+            }catch(Exception e)
+            {
+                ViewData["message"] = "Something bad happend";
+                return View("Register");
+            }
 
-            answer = facade.SignUp(UserName, FullName, Password, Birthday);
-
-            ViewData["message"] = answer;
+            ViewData["message"] = "User succefully created";
             return View("Index");
         }
 

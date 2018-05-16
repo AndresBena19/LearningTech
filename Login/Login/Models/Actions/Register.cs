@@ -20,17 +20,10 @@ namespace Login.Models.Actions
 
 
 
-            try
-            {
-                MySqlDataReader reader = ExecuteProcedure.executeStoreProcedure("CreateUser", parametros);
+          
+            MySqlDataReader reader = ExecuteProcedure.executeStoreProcedure("CreateUser", parametros);
 
-            }
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.WriteLine(e);
-                return e.ToString();
-            }
-
+         
             return "All Good";
 
 
