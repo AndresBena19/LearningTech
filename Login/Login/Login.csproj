@@ -116,7 +116,10 @@
     </Compile>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Models\Actions\AllCourses.cs" />
+    <Compile Include="Models\Actions\OwnCourses.cs" />
     <Compile Include="Models\Actions\Register.cs" />
+    <Compile Include="Models\Actions\UserToCourse.cs" />
     <Compile Include="Models\DataAccess\ExecuteProcedure.cs" />
     <Compile Include="Models\DataAccess\Parametro.cs" />
     <Compile Include="Models\Actions\loginSimple.cs" />
@@ -152,6 +155,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\MakeRegister.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\MakeLogin.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Dashboard.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Courses.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\MyCourses.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\AssociateCourse.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

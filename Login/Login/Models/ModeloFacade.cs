@@ -1,6 +1,7 @@
 ﻿                
 
 using System;
+using System.Collections.Generic;
 using Login.Models.Actions;
 
 namespace Login.Models
@@ -16,5 +17,21 @@ namespace Login.Models
         {
             return new Register().SignUp(UserName,FullName,Password,Birthday);
         }
+
+        public Dictionary<string, Dictionary<string, string>> GetAllCourses(string username)
+        {
+            return new AllCourses().GetAllCourses(username);
+        }
+
+        public Dictionary<string, Dictionary<string, string>> GetMyCourses(string username)
+        {
+            return new OwnCourses().GetMyCourses(username);
+        }
+
+        public void AssociateCourse(string username, string idCourse)
+        {
+             new UserToCourse().AssociateCourse(username, idCourse);
+        }
+
     }
     }

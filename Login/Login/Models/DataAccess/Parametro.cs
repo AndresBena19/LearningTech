@@ -9,5 +9,7 @@ namespace Login.Models.DataAccess
     {
         public string nombre { get; set; }
         public string valor { get; set;  }
+
+        public int id { get; set; }
     }
 }

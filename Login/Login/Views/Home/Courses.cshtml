@@ -1,0 +1,199 @@
+﻿@{
+    var Courses = (Dictionary<string, Dictionary<string, string>>)ViewData["Courses"];
+    
+}
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>TITLE</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+
+
+    <!-- Font -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+     <!-- Vendor Styles -->
+    <link href="~/Scripts/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Theme Styles -->
+    <link href="~/Scripts/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="~/Scripts/css/global/global.css" rel="stylesheet" type="text/css" /
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="~/Scripts/Courses/common-css/bootstrap.css" rel="stylesheet">
+
+    <link href="~/Scripts/Courses/common-css/ionicons.css" rel="stylesheet">
+    <link href="~/Scripts/Courses/layout-1/css/styles.css" rel="stylesheet">
+    <link href="~/Scripts/Courses/layout-1/css/responsive.css" rel="stylesheet">
+
+   >
+
+
+
+</head>
+<header class="navbar-fixed-top s-header js__header-sticky js__header-overlay" style="background:Black">
+    <!-- Navbar -->
+    <div class="s-header__navbar">
+        <div class="s-header__container">
+            <div class="s-header__navbar-row">
+                <div class="s-header__navbar-row-col">
+                    <!-- Logo -->
+                    <div class="s-header__logo">
+                        <a href="index.html" class="s-header__logo-link">
+                            <img class="s-header__logo-img s-header__logo-img-shrink" src="img/logo-dark.png" alt="Megakit Logo">
+                        </a>
+                    </div>
+                    <!-- End Logo -->
+                </div>
+                <div class="s-header__navbar-row-col">
+                    <!-- Trigger -->
+                    <a href="javascript:void(0);" class="s-header__trigger js__trigger">
+                        <h1 style="color:white">@Session["Userchar"]</h1>
+                    </a>
+                    <!-- End Trigger -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Navbar -->
+    <!-- Overlay -->
+    <div class="s-header-bg-overlay js__bg-overlay">
+        <!-- Nav -->
+        <nav class="s-header__nav js__scrollbar">
+            <div class="container-fluid">
+                <!-- Menu List -->
+                <ul class="list-unstyled s-header__nav-menu">
+                    <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" style="color:white" onclick="location.href='@Url.Action("Courses","Home")'">Other Courses</a></li>
+                    <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" style="color:white" onclick="location.href='@Url.Action("MyCourses","Home")'">My Courses</a></li>
+                    <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" style="color:white" onclick="location.href='@Url.Action("Index","Home")'">Log out</a></li>
+
+                </ul>
+       
+            </div>
+        </nav>
+        <!-- End Nav -->
+        <!-- Action -->
+        <ul class="list-inline s-header__action s-header__action--lb">
+            <li class="s-header__action-item"><a class="s-header__action-link -is-active" href="#">En</a></li>
+            <li class="s-header__action-item"><a class="s-header__action-link" href="#">Fr</a></li>
+        </ul>
+        <!-- End Action -->
+
+    </div>
+    <!-- End Overlay -->
+</header>
+<body>
+
+    <section class="blog-area section">
+
+        <div class="container">
+
+            <div class="row">
+
+
+                @foreach (var Course in Courses)
+                {
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card h-100">
+                            <div class="single-post post-style-1">
+
+                                <div class="blog-image"><img src="~/Scripts/Courses/images/pexels-photo-370474.jpeg" alt="Blog Image"></div>
+                                <div style="background:#191633 ">
+                                    <a style="color:white";  id="idCourse" >@Course.Key</a>
+                                </div>
+                                @foreach (var DataCourse in Course.Value)
+                                {
+                                    <h4 class="title">
+                                        <a href="#">
+                                            <b>
+                                                @DataCourse.Value
+                                            </b>
+                                        </a>
+                                    </h4>
+
+
+                                }
+                                <ul class="post-footer">
+                                    <li><a href="#"><i class="ion-heart"></i>57</a></li>
+                                    <li><a href="#"><i class="ion-chatbubble"></i>6</a></li>
+                                    <li>
+                                        <a href="#">
+                                            <button type="button" class="btn btn-default btn-sm" onclick="post('/Home/AssociateCourse')">
+                                                <span class="glyphicon glyphicon-tasks"></span> Register
+                                            </button>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </div><!-- single-post -->
+                        </div><!-- card -->
+                    </div><!-- col-lg-4 col-md-6 -->
+                }
+
+
+            </div><!-- row -->
+
+            <a class="load-more-btn" href="#"><b>LOAD MORE</b></a>
+
+        </div><!-- container -->
+    </section><!-- section -->
+    <!-- SCIPTS -->
+
+    <script src="~/Scripts/Courses/common-js/jquery-3.1.1.min.js"></script>
+
+    <script src="~/Scripts/Courses/common-js/tether.min.js"></script>
+
+    <script src="~/Scripts/Courses/common-js/bootstrap.js"></script>
+
+    <script src="~/Scripts/Courses/common-js/scripts.js"></script>
+
+    <!-- Back To Top -->
+    <a href="javascript:void(0);" class="s-back-to-top js__back-to-top"></a>
+    <!--========== JAVASCRIPTS (Load javascripts at bottom, this will reduce page load time) ==========-->
+    <!-- Vendor -->
+    <script type="text/javascript" src="~/Scripts/vendor/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- General Components and Settings -->
+    <script type="text/javascript" src="~/Scripts/js/global.min.js"></script>
+
+
+    <script>
+        function post(path) {
+            method = "post"; // Set method to post by default if not specified.
+
+            var value = document.getElementById("idCourse").textContent
+            console.log(value)
+
+            var params = {idCourse : value}
+
+            // The rest of this code assumes you are not using a library.
+            // It can be made less wordy if you use one.
+            var form = document.createElement("form");
+            form.setAttribute("method", method);
+            form.setAttribute("action", path);
+
+
+            
+
+            for (var key in params) {
+                if (params.hasOwnProperty(key)) {
+                    var hiddenField = document.createElement("input");
+                    hiddenField.setAttribute("type", "hidden");
+                    hiddenField.setAttribute("name", key);
+                    hiddenField.setAttribute("value", params[key]);
+
+                    form.appendChild(hiddenField);
+                }
+            }
+
+            document.body.appendChild(form);
+            form.submit();
+        }
+    </script>
+
+</body>
+</html>

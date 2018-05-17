@@ -22,14 +22,40 @@ namespace Login.Controllers
             return View();
         }
 
-
-        [HttpPost]
-        public ActionResult CheckLogin(string username, string password){
-            ModeloFacade facade = new ModeloFacade();
-  
-            return View(); 
-            
+        public ActionResult Dashboard()
+        {
+            return View();
         }
+
+        public ActionResult Courses()
+        {
+            Dictionary<string, Dictionary<string, string>> Courses = new Dictionary<string, Dictionary<string, string>>();
+
+
+            ModeloFacade facade = new ModeloFacade();
+
+            Courses = facade.GetAllCourses((string)Session["user"]);
+
+            ViewData["Courses"] = Courses;
+
+            return View();
+        }
+
+
+        public ActionResult MyCourses()
+        {
+            Dictionary<string, Dictionary<string, string>> Courses = new Dictionary<string, Dictionary<string, string>>();
+
+
+            ModeloFacade facade = new ModeloFacade();
+
+            Courses = facade.GetMyCourses((string)Session["user"]);
+
+            ViewData["Courses"] = Courses;
+
+            return View();
+        }
+
 
         [HttpPost]
         public ActionResult MakeRegister(string UserName, string FullName, string Password, string Birthday)
@@ -45,11 +71,53 @@ namespace Login.Controllers
                 ViewData["message"] = "Something bad happend";
                 return View("Register");
             }
-
-            ViewData["message"] = "User succefully created";
             return View("Index");
         }
 
-        
-    }
+
+        [HttpPost]
+        public ActionResult MakeLogin(string username, string password)
+        {
+            ModeloFacade facade = new ModeloFacade();
+
+          
+            string answer = null;
+            try
+            {
+                answer= facade.checkLogin(username,password);
+            }
+            catch (Exception e)
+            {
+                ViewData["message"] = e.ToString();
+                return View("Register");
+            }
+
+            if (answer == "ok"){
+                Session["user"] = username;
+                Session["Userchar"] = username[0];
+                Courses();
+                return View("Courses");
+            }
+            else
+            {
+                ViewData["message"] = answer;
+
+                return View("Login");
+            }
+
+            
+        }
+
+        [HttpPost]
+        public ActionResult AssociateCourse(string idCourse)
+        {
+            ModeloFacade facade = new ModeloFacade();
+            facade.AssociateCourse((string)Session["user"], idCourse);
+
+            MyCourses();
+            return View("Courses");
+        }
+
+
+        }
 }

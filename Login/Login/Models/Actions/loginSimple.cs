@@ -12,14 +12,21 @@ namespace Login.Models
 
             List<Parametro> parametros = new List<Parametro>();
             parametros.Add(new Parametro() { nombre = "_UserName", valor = username });
-            parametros.Add(new Parametro() { nombre = "_pasword", valor = password });
-            parametros.Add(new Parametro() { nombre = "mensaje", valor = "" });
+            parametros.Add(new Parametro() { nombre = "_Password", valor = password});
+            parametros.Add(new Parametro() { nombre = "_message", valor = "" });
 
 
-            MySqlDataReader reader = ExecuteProcedure.executeStoreProcedure("Login", parametros);
-            reader.Read();
+            MySqlDataReader reader = ExecuteProcedure.executeStoreProcedure("login", parametros);
 
-            return (string)reader["mensaje"];
+            string answer = null;
+            while (reader.Read())
+            {
+
+                answer = (string)reader["_message"];
+
+            }
+
+            return answer;
             
 
         }

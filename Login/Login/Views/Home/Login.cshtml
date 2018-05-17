@@ -30,6 +30,9 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
 
 </head>
 <body>
@@ -37,7 +40,18 @@
     <div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
+
+                @using (Html.BeginForm("MakeLogin", "Home", FormMethod.Post))
+                {
                 <form class="login100-form validate-form flex-sb flex-w">
+                                        @if (ViewData["message"] != null)
+                        {
+                                    <div class="alert alert-danger">
+                                        <strong>@ViewData["message"]</strong>
+                                    </div>
+                    }
+
+
                     <span class="login100-form-title p-b-32">
                         Account Login
                     </span>
@@ -57,7 +71,7 @@
                         <span class="btn-show-pass">
                             <i class="fa fa-eye"></i>
                         </span>
-                        <input class="input100" type="password" name="pass">
+                        <input class="input100" type="password" name="password">
                         <span class="focus-input100"></span>
                     </div>
 
@@ -77,12 +91,13 @@
                     </div>
 
                     <div class="container-login100-form-btn">
-                        <button class="login100-form-btn">
+                        <button class="login100-form-btn" onclick="location.href='@Url.Action("Index","Home")'">
                             Login
                         </button>
                     </div>
 
                 </form>
+                }
             </div>
         </div>
     </div>
@@ -108,6 +123,9 @@
     <script src="~/Scripts/Login/js/main.js"></script>
     <script src='https://cldup.com/S6Ptkwu_qA.js'></script>
     <script src="~/Scripts/Particules/js/index.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </body>
 </html>
