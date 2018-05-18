@@ -23,13 +23,17 @@
 <header class="navbar-fixed-top s-header js__header-sticky js__header-overlay" style="background:Black">
     <!-- Navbar -->
     <div class="s-header__navbar">
+        
         <div class="s-header__container">
             <div class="s-header__navbar-row">
                 <div class="s-header__navbar-row-col">
+                    
                     <!-- Logo -->
                     <div class="s-header__logo">
+                    
                         <a href="index.html" class="s-header__logo-link">
                             <img class="s-header__logo-img s-header__logo-img-shrink" src="img/logo-dark.png" alt="Megakit Logo">
+                            <h1 style="color:white">@Session["ActualCourse"]</h1>
                         </a>
                     </div>
                     <!-- End Logo -->
@@ -50,10 +54,9 @@
 
     <div class="s-header-bg-overlay js__bg-overlay">
 
-
-
         <!-- Nav -->
         <nav class="s-header__nav js__scrollbar">
+            
             <div class="container-fluid">
                 <!-- Menu List -->
                 <ul class="list-unstyled s-header__nav-menu">
@@ -78,6 +81,12 @@
 </header>
 <!-- /Header -->
 <hr>
+
+<hr>
+
+
+<hr>
+
 <body>
 
     <!-- Main -->
@@ -96,7 +105,7 @@
                         </a>
                         <ul style="height: auto;" class="list-unstyled in" id="userMenu">
                             <li class="active"> <a href="#"><i class="glyphicon glyphicon-home"></i> Home</a></li>
-                            <li><a href="#"><i class="glyphicon glyphicon-envelope"></i> Consultation <span class="badge badge-info">4</span></a></li>
+                            <li><a onclick="post('/Dashboard/AllQuerysByCourse')"><i class="glyphicon glyphicon-envelope" ></i> Consultation <span class="badge badge-info">4</span></a></li>
                             <li><a href="#"><i class="glyphicon glyphicon-user"></i> Staff List</a></li>
                             <li><a href="#"><i class="glyphicon glyphicon-flag"></i> My questions</a></li>
 
@@ -384,6 +393,40 @@
                 $(this).find("i").toggleClass("glyphicon-chevron-right glyphicon-chevron-down");
             });
         });
+    </script>
+
+    <script>
+        function post(path) {
+            method = "post"; // Set method to post by default if not specified.
+
+
+            console.log(@Session["ActualCourse"])
+
+            var params = { idCourse: @Session["ActualCourse"] }
+
+            // The rest of this code assumes you are not using a library.
+            // It can be made less wordy if you use one.
+            var form = document.createElement("form");
+            form.setAttribute("method", method);
+            form.setAttribute("action", path);
+
+
+
+
+            for (var key in params) {
+                if (params.hasOwnProperty(key)) {
+                    var hiddenField = document.createElement("input");
+                    hiddenField.setAttribute("type", "hidden");
+                    hiddenField.setAttribute("name", key);
+                    hiddenField.setAttribute("value", params[key]);
+
+                    form.appendChild(hiddenField);
+                }
+            }
+
+            document.body.appendChild(form);
+            form.submit();
+        }
     </script>
 
 </body>

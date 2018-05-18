@@ -110,6 +110,7 @@
     <Folder Include="Models\App_LocalResources\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -120,6 +121,11 @@
     <Compile Include="Models\Actions\OwnCourses.cs" />
     <Compile Include="Models\Actions\Register.cs" />
     <Compile Include="Models\Actions\UserToCourse.cs" />
+    <Compile Include="Models\Dashboard\AnswerQuery.cs" />
+    <Compile Include="Models\Dashboard\AnswersToQuery.cs" />
+    <Compile Include="Models\Dashboard\MyQueryByCourse.cs" />
+    <Compile Include="Models\Dashboard\QuerysByCourse.cs" />
+    <Compile Include="Models\Dashboard\SendPost.cs" />
     <Compile Include="Models\DataAccess\ExecuteProcedure.cs" />
     <Compile Include="Models\DataAccess\Parametro.cs" />
     <Compile Include="Models\Actions\loginSimple.cs" />
@@ -160,7 +166,7 @@
     <Content Include="Views\Home\MakeLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\Dashboard.cshtml" />
+    <Content Include="Views\Dashboard\Dashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Courses.cshtml" />
@@ -170,6 +176,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\AssociateCourse.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Dashboard\Post.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Dashboard\AllQuerysByCourse.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Dashboard\AllMyQuerysByCourse.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Dashboard\MakePost.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

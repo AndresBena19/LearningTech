@@ -1,0 +1,255 @@
+﻿
+    @{
+        var Queries = (Dictionary<string, Dictionary<string, string>>)ViewData["Queries"];
+
+    }
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Admin Theme Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Vendor Styles -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+    <link href="~/Scripts/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Theme Styles -->
+    <link href="~/Scripts/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="~/Scripts/css/global/global.css" rel="stylesheet" type="text/css" />
+
+    <link href="~/Scripts/Users/assets/css/admin.css" rel="stylesheet">
+
+    <style>
+        #play {
+            Top: 10px;
+            Right: 10px;
+            Position: absolute
+        }
+    </style>
+
+
+</head>
+
+<header class="navbar-fixed-top s-header js__header-sticky js__header-overlay" style="background:Black">
+    <!-- Navbar -->
+    <div class="s-header__navbar">
+
+        <div class="s-header__container">
+            <div class="s-header__navbar-row">
+                <div class="s-header__navbar-row-col">
+
+                    <!-- Logo -->
+                    <div class="s-header__logo">
+
+                        <a href="index.html" class="s-header__logo-link">
+                            <img class="s-header__logo-img s-header__logo-img-shrink" src="img/logo-dark.png" alt="Megakit Logo">
+                            <h1 style="color:white">@Session["ActualCourse"]</h1>
+                        </a>
+                    </div>
+                    <!-- End Logo -->
+                </div>
+                <div class="s-header__navbar-row-col">
+                    <!-- Trigger -->
+                    <a href="javascript:void(0);" class="s-header__trigger js__trigger">
+                        <h1 style="color:white">@Session["Userchar"]</h1>
+                    </a>
+                    <!-- End Trigger -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Navbar -->
+    <!-- Overlay -->
+
+
+    <div class="s-header-bg-overlay js__bg-overlay">
+
+        <!-- Nav -->
+        <nav class="s-header__nav js__scrollbar">
+
+            <div class="container-fluid">
+                <!-- Menu List -->
+                <ul class="list-unstyled s-header__nav-menu">
+                    <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" style="color:white" onclick="location.href='@Url.Action("Courses","Home")'">Other Courses</a></li>
+                    <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" style="color:white" onclick="location.href='@Url.Action("MyCourses","Home")'">My Courses</a></li>
+                    <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" style="color:white" onclick="location.href='@Url.Action("Index","Home")'">Log out</a></li>
+
+                </ul>
+
+            </div>
+        </nav>
+        <!-- End Nav -->
+        <!-- Action -->
+        <ul class="list-inline s-header__action s-header__action--lb">
+            <li class="s-header__action-item"><a class="s-header__action-link -is-active" href="#">En</a></li>
+            <li class="s-header__action-item"><a class="s-header__action-link" href="#">Fr</a></li>
+        </ul>
+        <!-- End Action -->
+
+    </div>
+    <!-- End Overlay -->
+</header>
+<!-- /Header -->
+<hr>    
+<hr>
+<hr>
+<hr>
+
+<body>
+
+    <!-- Main -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <!-- Left column -->
+         
+                <hr>
+
+                <ul class="list-unstyled">
+                    <li class="nav-header">
+                        <a class="" href="#" data-toggle="collapse" data-target="#userMenu">
+                            <h5>Settings <i class="glyphicon glyphicon-chevron-down"></i></h5>
+                        </a>
+                        <ul style="height: auto;" class="list-unstyled in" id="userMenu">
+                            <li class="active"> <a onclick="location.href='@Url.Action("Dashboard","Dashboard" , new {idCourse = Session["ActualCourse"]})'"><i class="glyphicon glyphicon-home"></i> Home</a></li>
+                            <li><a onclick="post('/Dashboard/AllQuerysByCourse')"><i class="glyphicon glyphicon-envelope"></i> Consultation <span class="badge badge-info">4</span></a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-user"></i> Staff List</a></li>
+                            <li><a  onclick="location.href='@Url.Action("AllMyQuerysByCourse","Dashboard" , new {idCourse = Session["ActualCourse"]})'"><i class="glyphicon glyphicon-flag"></i> My questions</a></li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+
+                <hr>
+            </div><!-- /col-3 -->
+            <div class="col-md-9">
+
+
+                <hr>
+                @using (Html.BeginForm("MakePost", "Dashboard", FormMethod.Post))
+                   {
+                    <form>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Ask whatever you want?</label>
+                            <textarea class="form-control" name="Query" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                        <button type="submit" id="Query" class="btn btn-default btn-sm" onclick="location.href='@Url.Action("AllQuerysByCourse","Dashboard")'">
+                            <span class="glyphicon glyphicon-play"></span> Play
+                        </button>
+
+                    </form>
+                    }
+
+
+                <hr>
+                <a href="#"><strong><i class="glyphicon glyphicon-comment"></i> Discussions</strong></a>
+
+                <hr>
+
+
+                <div class="row">
+                    <div class="col-md-12">
+
+                        @foreach (var query in Queries)
+            {
+                <ul class="list-group">
+
+                    <li class="list-group-item">
+                        <a href="#">
+                            <i class="glyphicon glyphicon-flash">
+                            </i>
+                            <small>
+                                Owner: @query.Value.ToList()[0].Value
+                            </small>
+
+                        </a>
+                        <hr>
+                        <a> Query: @query.Value.ToList()[1].Value</a>
+                        <button type="button" id="play" class="btn btn-default btn-sm" onclick="location.href='@Url.Action("Post","Dashboard", new {Query= @query.Value.ToList()[1].Value, owner=@query.Value.ToList()[0].Value , idQuery=query.Key })'">
+                            <span class="glyphicon glyphicon-play"></span> Play
+                        </button>
+                    </li>
+
+
+                </ul>
+}
+
+
+                    </div>
+                </div>
+
+
+
+
+            </div><!--/col-span-9-->
+        </div>
+    </div>
+    <!-- /Main -->
+    <!-- Back To Top -->
+    <a href="javascript:void(0);" class="s-back-to-top js__back-to-top"></a>
+    <!--========== JAVASCRIPTS (Load javascripts at bottom, this will reduce page load time) ==========-->
+    <!-- Vendor -->
+    <script type="text/javascript" src="~/Scripts/vendor/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- General Components and Settings -->
+    <script type="text/javascript" src="~/Scripts/js/global.min.js"></script>
+
+    <script type="text/javascript" src="~/Scripts/Users/assets/js/jquery.js"></script>
+    <script type="text/javascript" src="~/Scripts/Users/assets/js/bootstrap.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".alert").addClass("in").fadeOut(4500);
+            $('[data-toggle=collapse]').click(function () {
+                $(this).find("i").toggleClass("glyphicon-chevron-right glyphicon-chevron-down");
+            });
+        });
+    </script>
+
+    <script>
+        function post(path) {
+            method = "post"; // Set method to post by default if not specified.
+
+
+            console.log(value)
+
+            var params = { idCourse: value }
+
+            // The rest of this code assumes you are not using a library.
+            // It can be made less wordy if you use one.
+            var form = document.createElement("form");
+            form.setAttribute("method", method);
+            form.setAttribute("action", path);
+
+
+
+
+            for (var key in params) {
+                if (params.hasOwnProperty(key)) {
+                    var hiddenField = document.createElement("input");
+                    hiddenField.setAttribute("type", "hidden");
+                    hiddenField.setAttribute("name", key);
+                    hiddenField.setAttribute("value", params[key]);
+
+                    form.appendChild(hiddenField);
+                }
+            }
+
+            document.body.appendChild(form);
+            form.submit();
+        }
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+</html>

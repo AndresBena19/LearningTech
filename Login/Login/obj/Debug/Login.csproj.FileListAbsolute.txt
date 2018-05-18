@@ -145,3 +145,6 @@ C:\Users\andresfelipe\Documents\GitHub\LearningTech\Login\Login\obj\Debug\Login.
 C:\Users\andresfelipe\Documents\GitHub\LearningTech\Login\Login\obj\Debug\Login.csproj.CopyComplete
 C:\Users\andresfelipe\Documents\GitHub\LearningTech\Login\Login\obj\Debug\Login.dll
 C:\Users\andresfelipe\Documents\GitHub\LearningTech\Login\Login\obj\Debug\Login.pdb
+C:\Users\andresfelipe\Documents\GitHub\LearningTech\Login\Login\bin\es\System.Net.Http.Formatting.resources.dll
+C:\Users\andresfelipe\Documents\GitHub\LearningTech\Login\Login\bin\es\System.Web.Http.resources.dll
+C:\Users\andresfelipe\Documents\GitHub\LearningTech\Login\Login\bin\es\System.Web.Http.WebHost.resources.dll
